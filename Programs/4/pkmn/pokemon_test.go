@@ -7,7 +7,7 @@ import (
 
 func TestCreatePokemon(t *testing.T) {
 	// the desired Pokemon
-	pkmn := poke()
+	pkmn := poke(0)
 
 	// test using correct input
 	prec, err := CreatePokemon("792", "Lunala", "680", []string{"psychic", "ghost"})
@@ -51,8 +51,8 @@ func TestCreatePokemon(t *testing.T) {
 
 // TestPrint ensures a proper print occurs
 func TestPrint(t *testing.T) {
-	p := poke()
-	printed := false
+	p := poke(0)
+	var printed bool
 	p.Print()
 	printed = true
 
@@ -61,11 +61,21 @@ func TestPrint(t *testing.T) {
 	}
 }
 
-func poke() *Pokemon {
-	return &Pokemon{
-		Num:   792,
-		Name:  "Lunala",
-		CP:    680,
-		Types: []string{"psychic", "ghost"},
+func poke(num int) *Pokemon {
+	if num == 0 {
+		return &Pokemon{
+			Num:   792,
+			Name:  "Lunala",
+			CP:    680,
+			Types: []string{"psychic", "ghost"},
+		}
+	} else if num == 1 {
+		return &Pokemon{
+			Num:   681,
+			Name:  "Aegislash",
+			CP:    520,
+			Types: []string{"steel", "ghost"},
+		}
 	}
+	return nil
 }

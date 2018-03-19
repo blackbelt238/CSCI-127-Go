@@ -15,7 +15,7 @@ type Pokemon struct {
 
 // CreatePokemon creates a new Pokemon using the given infomation
 func CreatePokemon(numstr string, name string, cpstr string, types []string) (*Pokemon, error) {
-	pkmn := &Pokemon{
+	p := &Pokemon{
 		Name:  name,
 		Types: types,
 	}
@@ -25,23 +25,23 @@ func CreatePokemon(numstr string, name string, cpstr string, types []string) (*P
 	if err != nil {
 		return nil, fmt.Errorf("cannot create Pokemon: %v", err)
 	}
-	pkmn.Num = int(num)
+	p.Num = int(num)
 
 	// parse the Pokemon's CP
 	cp, err := strconv.ParseInt(cpstr, 10, 0)
 	if err != nil {
 		return nil, fmt.Errorf("cannot create Pokemon: %v", err)
 	}
-	pkmn.CP = int(cp)
+	p.CP = int(cp)
 
-	return pkmn, nil
+	return p, nil
 }
 
 // Print allows the pokemon to be printed
 func (p *Pokemon) Print() {
 	fmt.Printf("Number: %d, Name: %s, CP: %d, type: %s ", p.Num, p.Name, p.CP, p.Types[0])
 	if len(p.Types) > 1 {
-		fmt.Print("and", p.Types[1])
+		fmt.Print("and ", p.Types[1])
 	}
 	fmt.Println()
 }
