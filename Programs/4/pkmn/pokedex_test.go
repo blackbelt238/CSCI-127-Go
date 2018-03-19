@@ -17,6 +17,9 @@ func TestCreatePokedex(t *testing.T) {
 	if p.pokemon[2].Name != "Lunala" {
 		t.Errorf("created pokedex does not have the pokemon. found %s", p.pokemon[2].Name)
 	}
+	if p.pokemon[2].Types[0] != "psychic" {
+		t.Errorf("Types don't match. want psychic, found %s", p.pokemon[2].Types[0])
+	}
 
 	// test a nonexistent file
 	_, err = CreatePokedex("404.txt")

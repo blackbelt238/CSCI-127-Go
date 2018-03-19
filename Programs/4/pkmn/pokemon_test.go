@@ -49,18 +49,6 @@ func TestCreatePokemon(t *testing.T) {
 	}
 }
 
-// TestPrint ensures a proper print occurs
-func TestPrint(t *testing.T) {
-	p := poke(0)
-	var printed bool
-	p.Print()
-	printed = true
-
-	if !printed {
-		t.Errorf("Pokemon was not printed\n")
-	}
-}
-
 func poke(num int) *Pokemon {
 	if num == 0 {
 		return &Pokemon{
