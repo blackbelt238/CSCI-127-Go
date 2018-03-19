@@ -48,6 +48,11 @@ func CreatePokedex(fname string) (*Pokedex, error) {
 	return dex, nil
 }
 
+// Count outputs the number of Pokemon present in the Pokedex
+func (p *Pokedex) Count() {
+	fmt.Printf("There are %d different Pokemon in the Pokedex", len(p.pokemon))
+}
+
 // LookupByName outputs whether a Pokemon of the given name is in the dex
 func (p *Pokedex) LookupByName(name string) {
 	for _, pkmn := range p.pokemon {
