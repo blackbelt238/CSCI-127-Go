@@ -48,12 +48,33 @@ func CreatePokedex(fname string) (*Pokedex, error) {
 	return dex, nil
 }
 
+// LookupByName outputs whether a Pokemon of the given name is in the dex
+func (p *Pokedex) LookupByName(name string) {
+	for _, pkmn := range p.pokemon {
+		if pkmn.Name == name {
+			pkmn.Print()
+			return
+		}
+	}
+	fmt.Printf("No Pokemon named %s in the Pokedex\n", name)
+}
+
+// LookupByNum outputs whether a Pokemon of the given num is in the dex
+func (p *Pokedex) LookupByNum(num int) {
+	p.sort() // sort the dex in numerical order
+	for _, pkmn := range p.pokemon {
+		if pkmn.Num == num {
+			pkmn.Print()
+			return
+		}
+	}
+	fmt.Printf("Pokemon number %d in not in the Pokedex\n", num)
+}
+
 // Print outputs the contents of the pokedex in
 func (p *Pokedex) Print() {
 	// sort the pokedex
-	sort.Slice(p.pokemon, func(i, j int) bool {
-		return p.pokemon[i].Num < p.pokemon[j].Num
-	})
+	p.sort()
 
 	fmt.Println("The Pokedex")
 	fmt.Println("-----------")
@@ -61,4 +82,10 @@ func (p *Pokedex) Print() {
 		pkmn.Print()
 	}
 	fmt.Print("-----------\n\n")
+}
+
+func (p *Pokedex) sort() {
+	sort.Slice(p.pokemon, func(i, j int) bool {
+		return p.pokemon[i].Num < p.pokemon[j].Num
+	})
 }
