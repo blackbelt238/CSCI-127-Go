@@ -1,0 +1,4 @@
+3,Venusaur,525,grass,poison
+681,Aegislash,520,steel,ghost
+792,Lunala,680,psychic,ghost
+94,Gengar,500,ghost,poison

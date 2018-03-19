@@ -55,12 +55,31 @@ func TestCP(t *testing.T) {
 	}
 }
 
+// TestLookupByName tests all execution paths of LookupByName
 func TestLookupByName(t *testing.T) {
+	p, _ := createTestDex()
+	name := "Aegislash" // in test dex
+	if !p.LookupByName(name) {
+		t.Errorf("%s expected in Pokedex, but could not be found.", name)
+	}
 
+	name = "Gallade" // not in test dex
+	if p.LookupByName(name) {
+		t.Errorf("%s not expected in Pokedex, but found.", name)
+	}
 }
 
 func TestLookupByNum(t *testing.T) {
+	p, _ := createTestDex()
+	num := 94 // in test dex
+	if !p.LookupByNum(num) {
+		t.Errorf("%d expected in Pokedex, but could not be found.", num)
+	}
 
+	num = 1 // not in test dex
+	if p.LookupByNum(num) {
+		t.Errorf("%d not expected to be in Pokedex, but found.", num)
+	}
 }
 
 func TestSort(t *testing.T) {
