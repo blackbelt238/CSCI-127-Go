@@ -49,40 +49,44 @@ func CreatePokedex(fname string) (*Pokedex, error) {
 }
 
 // Count outputs the number of Pokemon present in the Pokedex
-func (p *Pokedex) Count() {
-	fmt.Printf("There are %d different Pokemon in the Pokedex", len(p.pokemon))
+func (p *Pokedex) Count() int {
+	fmt.Printf("There are %d different Pokemon in the Pokedex\n", len(p.pokemon))
+	return len(p.pokemon)
 }
 
 // CP outputs the total of combat points across all Pokemon in the Pokedex
-func (p *Pokedex) CP() {
+func (p *Pokedex) CP() int {
 	var pcp int // total cp in the Pokedex
 	for _, pkmn := range p.pokemon {
 		pcp += pkmn.CP
 	}
-	fmt.Printf("The total number of combat points for all Pokemon in the Pokedex is %d", pcp)
+	fmt.Printf("The total number of combat points for all Pokemon in the Pokedex is %d\n", pcp)
+	return pcp
 }
 
 // LookupByName outputs whether a Pokemon of the given name is in the dex
-func (p *Pokedex) LookupByName(name string) {
+func (p *Pokedex) LookupByName(name string) bool {
 	for _, pkmn := range p.pokemon {
 		if pkmn.Name == name {
 			pkmn.Print()
-			return
+			return true
 		}
 	}
 	fmt.Printf("No Pokemon named %s in the Pokedex\n", name)
+	return false
 }
 
 // LookupByNum outputs whether a Pokemon of the given num is in the dex
-func (p *Pokedex) LookupByNum(num int) {
+func (p *Pokedex) LookupByNum(num int) bool {
 	p.sort() // sort the dex in numerical order
 	for _, pkmn := range p.pokemon {
 		if pkmn.Num == num {
 			pkmn.Print()
-			return
+			return true
 		}
 	}
 	fmt.Printf("Pokemon number %d in not in the Pokedex\n", num)
+	return false
 }
 
 // Print outputs the contents of the pokedex in
