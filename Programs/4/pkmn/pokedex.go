@@ -53,6 +53,15 @@ func (p *Pokedex) Count() {
 	fmt.Printf("There are %d different Pokemon in the Pokedex", len(p.pokemon))
 }
 
+// CP outputs the total number of combat points across all Pokemon in the Pokedex
+func (p *Pokedex) CP() {
+	var pcp int // total cp in the Pokedex
+	for _, pkmn := range p.pokemon {
+		pcp += pkmn.CP
+	}
+	fmt.Printf("The total number of combat points for all Pokemon in the Pokedex is %d", pcp)
+}
+
 // LookupByName outputs whether a Pokemon of the given name is in the dex
 func (p *Pokedex) LookupByName(name string) {
 	for _, pkmn := range p.pokemon {
