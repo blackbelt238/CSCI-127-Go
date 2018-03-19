@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"sort"
 	"strings"
 )
 
@@ -30,7 +31,7 @@ func CreatePokedex(fname string) (*Pokedex, error) {
 		pkstr := entry.Text()
 		pklist := strings.Split(pkstr, ",")
 
-		types := make([]string, 1, 2)
+		types := make([]string, 0, 2)
 		for i := 3; i < len(pklist); i++ {
 			types = append(types, pklist[i])
 		}
@@ -45,4 +46,19 @@ func CreatePokedex(fname string) (*Pokedex, error) {
 	}
 
 	return dex, nil
+}
+
+// Print outputs the contents of the pokedex in
+func (p *Pokedex) Print() {
+	// sort the pokedex
+	sort.Slice(p.pokemon, func(i, j int) bool {
+		return p.pokemon[i].Num < p.pokemon[j].Num
+	})
+
+	fmt.Println("The Pokedex")
+	fmt.Println("-----------")
+	for _, pkmn := range p.pokemon {
+		pkmn.Print()
+	}
+	fmt.Print("-----------\n\n")
 }
