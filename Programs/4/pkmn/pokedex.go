@@ -53,7 +53,7 @@ func (p *Pokedex) Count() {
 	fmt.Printf("There are %d different Pokemon in the Pokedex", len(p.pokemon))
 }
 
-// CP outputs the total number of combat points across all Pokemon in the Pokedex
+// CP outputs the total of combat points across all Pokemon in the Pokedex
 func (p *Pokedex) CP() {
 	var pcp int // total cp in the Pokedex
 	for _, pkmn := range p.pokemon {
