@@ -37,11 +37,11 @@ func CreatePokemon(numstr string, name string, cpstr string, types []string) (*P
 	return p, nil
 }
 
-// Print allows the pokemon to be printed
-func (p *Pokemon) Print() {
-	fmt.Printf("Number: %d, Name: %s, CP: %d, type: %s ", p.Num, p.Name, p.CP, p.Types[0])
+// String converts the Pokemon's information to a string
+func (p *Pokemon) String() string {
+	pstr := fmt.Sprintf("Number: %d, Name: %s, CP: %d, type: %s ", p.Num, p.Name, p.CP, p.Types[0])
 	if len(p.Types) > 1 {
-		fmt.Print("and ", p.Types[1])
+		pstr += fmt.Sprint("and ", p.Types[1])
 	}
-	fmt.Println()
+	return pstr
 }

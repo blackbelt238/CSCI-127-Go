@@ -68,7 +68,7 @@ func (p *Pokedex) CP() int {
 func (p *Pokedex) LookupByName(name string) bool {
 	for _, pkmn := range p.pokemon {
 		if pkmn.Name == name {
-			pkmn.Print()
+			fmt.Println(pkmn)
 			return true
 		}
 	}
@@ -81,7 +81,7 @@ func (p *Pokedex) LookupByNum(num int) bool {
 	p.sort() // sort the dex in numerical order
 	for _, pkmn := range p.pokemon {
 		if pkmn.Num == num {
-			pkmn.Print()
+			fmt.Println(pkmn)
 			return true
 		}
 	}
@@ -97,7 +97,7 @@ func (p *Pokedex) Print() {
 	fmt.Println("\nThe Pokedex")
 	fmt.Println("-----------")
 	for _, pkmn := range p.pokemon {
-		pkmn.Print()
+		fmt.Println(pkmn)
 	}
 	fmt.Println("-----------")
 }

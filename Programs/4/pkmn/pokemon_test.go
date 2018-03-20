@@ -49,6 +49,17 @@ func TestCreatePokemon(t *testing.T) {
 	}
 }
 
+// TestPokemonToString ensures (*Pokemon).String properly converts the Pokemon
+func TestPokemonToString(t *testing.T) {
+	p := poke(1)
+	strexp := "Number: 681, Name: Aegislash, CP: 520, type: steel and ghost"
+
+	if p.String() != strexp {
+		t.Errorf("(*Pokemon).String method didn't properly convert the Pokemon:\n\trecieved: %s\n\texpected: %s\n", p.String(), strexp)
+	}
+}
+
+// poke returns Pokemon created using raw declarations
 func poke(num int) *Pokemon {
 	if num == 0 {
 		return &Pokemon{
