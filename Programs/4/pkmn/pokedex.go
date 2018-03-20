@@ -94,12 +94,12 @@ func (p *Pokedex) Print() {
 	// sort the pokedex
 	p.sort()
 
-	fmt.Println("The Pokedex")
+	fmt.Println("\nThe Pokedex")
 	fmt.Println("-----------")
 	for _, pkmn := range p.pokemon {
 		pkmn.Print()
 	}
-	fmt.Print("-----------\n\n")
+	fmt.Println("-----------")
 }
 
 func (p *Pokedex) sort() {
